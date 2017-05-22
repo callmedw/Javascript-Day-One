@@ -1,4 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+exports.apiKey = "71ce7bb50cb9ce230714325f7e72bdaf";
+
+},{}],2:[function(require,module,exports){
 function Calculator(skinName) {
   this.skin = skinName;
 }
@@ -25,7 +28,7 @@ var divide = function(number1, number2) {
 
 exports.calculatorModule = Calculator;
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 function Calculator(skinName) {
   this.skin = skinName;
 }
@@ -48,7 +51,7 @@ Calculator.prototype.pingPong = function(goal) {
 
 exports.calculatorModule = Calculator;
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 var Calculator = require('./../js/calculator.js').calculatorModule;
 
 $(document).ready(function() {
@@ -109,19 +112,22 @@ $(document).ready(function(){
   $('#time').text(moment());
 });
 
-var apiKey = "71ce7bb50cb9ce230714325f7e72bdaf";
+var apiKey = require('./../.env').apiKey;
 
 $(document).ready(function() {
   $('#weather-location').click(function() {
     var city = $('#location').val();
     $('#location').val("");
-    $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey, function(response) {
-      $('.showWeather').text("The number of clouds in " + city + " is " + response.clouds.all + "." + " ");
-      $('.showWeather').append("The pressure is " + city + " at " + response.main.pressure + "." + " ");
-      $('.showWeather').append("The humidity in " + city + " at " + response.main.humidity + "." + " ");
-      console.log(JSON.stringify(response));
-    });
+    $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey)
+      .then(function(response) {
+        $('.showWeather').text("The percentage of cloud coverage in " + city + " is " + response.clouds.all + "%" + " ");
+        $('.showWeather').append("The pressure in " + city + " is " + response.main.pressure + "." + " ");
+        $('.showWeather').append("The humidity in " + city + " is " + response.main.humidity + "%" + " ");
+      })
+      .fail(function(error) {
+        $('.showWeather').text(error.responseJSON.message);
+      });
   });
 });
 
-},{"./../js/calculator.js":1,"./../js/pingpong.js":2}]},{},[3]);
+},{"./../.env":1,"./../js/calculator.js":2,"./../js/pingpong.js":3}]},{},[4]);
