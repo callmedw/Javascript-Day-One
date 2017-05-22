@@ -1,0 +1,27 @@
+{
+  "name": "pingpong",
+  "description": "\"hey there!\"",
+  "main": "index.js",
+  "authors": [
+    "jc & dw"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "\"ping\"",
+    "\"pong\"",
+    "\"calculator\""
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7",
+    "moment": "^2.18.1"
+  }
+}
