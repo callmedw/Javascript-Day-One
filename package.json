@@ -1,0 +1,24 @@
+{
+  "name": "pingpong",
+  "version": "1.0.0",
+  "description": "\"hey there!\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "\"ping\"",
+    "\"pong\"",
+    "\"calculator\""
+  ],
+  "author": "jc & dw",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "browserify": "^14.3.0",
+    "gulp": "^3.9.1",
+    "minimatch": "^3.0.2"
+  }
+}
