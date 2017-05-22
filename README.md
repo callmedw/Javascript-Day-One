@@ -19,10 +19,10 @@ description stuff
 
 ## Setup
 clone
-
-    $npm install  
-
-
+```
+$ npm install  
+$ bower install
+```
 ### User Stories
 
 

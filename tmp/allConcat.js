@@ -64,9 +64,11 @@ $(document).ready(function() {
   $('#weather-location').click(function() {
     var city = $('#location').val();
     $('#location').val("");
-    $('.showWeather').text("The city you have chosen is " + city + ".");
     $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey, function(response) {
-      console.log(response);
+      $('.showWeather').text("The number of clouds in " + city + " is " + response.clouds.all + "." + " ");
+      $('.showWeather').append("The pressure is " + city + " at " + response.main.pressure + "." + " ");
+      $('.showWeather').append("The humidity in " + city + " at " + response.main.humidity + "." + " ");
+      console.log(JSON.stringify(response));
     });
   });
 });
